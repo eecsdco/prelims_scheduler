@@ -1,0 +1,10 @@
+<p class="col-md-1"><strong>${student}</strong></p>
+<p class="col-md-1" tal:repeat="fac faculty" tal:content="fac.uniqname"></p>
+<p class="col-md-6"></p>
+<div class="col-md-2">
+  <form role="form" action="cancel_prelim" method="post">
+    <input type="hidden" name="event_id" value="${event.id}" />
+    <input type="hidden" name="prelim_id" value="${prelim.id}" />
+    <button class="btn btn-danger">Cancel Prelim</button>
+  </form>
+</div>

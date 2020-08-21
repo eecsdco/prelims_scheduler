@@ -1,0 +1,15 @@
+delete from faculty where uniqname ='jiadeng';
+delete from faculty where uniqname ='gessl';
+delete from faculty where uniqname ='marios';
+delete from faculty where uniqname ='stephane';
+delete from faculty where uniqname ='martinjs';
+delete from faculty where uniqname ='jabernet';
+delete from faculty where uniqname ='kjc';
+delete from faculty where uniqname ='imarkov';
+delete from faculty where uniqname ='jholland';
+delete from faculty where uniqname ='shiyy';
+delete from faculty where uniqname ='radev';
+delete from faculty where uniqname ='prabal';
+delete from faculty where uniqname ='arunesh';
+delete from faculty where uniqname ='schoeneb';
+delete from faculty where uniqname ='teneket';

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html metal:use-macro="load: main.pt">
+  <div metal:fill-slot="head">
+    <title>UM CSE Prelims Availability Calendar</title>
+    <link href="/static/calendar.css" rel="stylesheet">
+  </div>
+
+  <div metal:fill-slot="content">
+    <h1>Meeting Availability</h1>
+    <p>Please mark when you are <strong>NOT</strong> available. You
+    can "paint" over time slots by clicking and dragging with the mouse.<p>
+
+    <p>By leaving a time unmarked, you are <strong>committing</strong> to being
+    available for that time slot. You can come back and edit your availability as
+    often as you like. If you are scheduled for a time slot, however, you will not
+    be able to mark that slot as busy. You will need to contact Dawn to have that
+    time "released".</p>
+
+    <div class="well">
+      <div style="overflow: hidden;">
+        <p class="btn" style="float: left;">Currently logged in as ${request.session['uniqname']}.</p>
+        <form role="form" class="form-horizontal" id="logout_form" style="float: right;"
+          action="logout" method="post" onsubmit="return check_for_unsaved()"
+          >
+          <button type="submit" class="btn btn-default">Logout</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="alert alert-success fade in" tal:condition="info_success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <p>${structure: info_success}</p>
+    </div>
+
+    <div>
+      ${structure: events}
+    </div>
+
+    <form role="form" class="form-horizontal" id="available_times_form"
+      action="update_times" method="post" onsubmit="return validate_and_add_available_times()"
+      >
+      <button type="submit" class="btn btn-primary">Submit my availability</button>
+    </form>
+  </div>
+
+  <div metal:fill-slot="footer_js">
+    <script src="/static/calendar.js"></script>
+    <script>
+      function validate_and_add_available_times() {
+        var busy_times = '';
+        var free_times = '';
+        $("td.ts_changed").each(function(index) {
+          if (cal_is_busy(this)) {
+            if (!this.was_busy) {
+              busy_times += $(this).attr("id") + " ";
+            }
+          } else if (cal_is_free(this)) {
+            if (this.was_busy) {
+              free_times += $(this).attr("id") + " ";
+            }
+          }
+        });
+        $('<input />').attr('type', 'hidden').attr('name', 'busy_times').attr('value', busy_times).appendTo('#available_times_form');
+        $('<input />').attr('type', 'hidden').attr('name', 'free_times').attr('value', free_times).appendTo('#available_times_form');
+
+        console.log("busy_times: >>>" + busy_times + "<<<");
+        console.log("free_times: >>>" + free_times + "<<<");
+        /*
+        if (busy_times.length == 0) {
+          return confirm("You are really available for every time slot?");
+        }
+        */
+        return true;
+      }
+
+      function check_for_unsaved() {
+        return true;
+      }
+    </script>
+  </div>
+</html>

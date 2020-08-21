@@ -1,0 +1,18 @@
+1. First, run
+ python get_data_from_google.py
+
+
+2. Create two directories
+   facs/
+   stus/
+
+3. Run 
+ python manage.py 
+
+4. Do
+ cp tex_makefile facs/
+ cp tex_makefile stus/
+
+5. In facs/ and stus/, 
+ make pdf
+

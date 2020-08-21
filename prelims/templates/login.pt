@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html metal:use-macro="load: main.pt">
+  <div metal:fill-slot="head">
+    <title>UM CSE Prelims Availability Login</title>
+  </div>
+
+  <div metal:fill-slot="content">
+    <h1>Prelims Availability</h1>
+
+    <form>
+      uniqname: <input type="text" name="uniqname">
+      <input type="submit" value="Login">
+    </form>
+    <p style="color: red;">${why_failed}</p>
+  </div>
+</html>
+

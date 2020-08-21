@@ -1,0 +1,24 @@
+<div id="event_${event.id}">
+  <div class="panel panel-primary">
+    <div class="panel-heading clickable"
+      data-toggle="collapse"
+      data-parent="#event_${event.id}"
+      data-target="#event_${event.id}_body"
+      >
+      <h2>${event.name}</h2>
+    </div>
+    <div id="event_${event.id}_body" class="panel-collapse collapse in">
+      <h4>&nbsp; Be sure to hit the Submit button at the bottom of the page when you are done!</h4>
+      <div class="panel-body">
+        <div id="event_${event.id}_panel_body" class="row">
+          <div class="col-lg-6">
+            <div id="event_${event.id}_cal">
+              ${structure: event_cal}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

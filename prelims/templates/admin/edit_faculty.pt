@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html metal:use-macro="load: ../main.pt">
+  <div metal:fill-slot="head">
+    <title>UM CSE Prelims - Edit Faculty</title>
+  </div>
+
+  <div metal:fill-slot="content">
+    <h1>Edit Faculty</h1>
+    <a href="/conf.html"><h2>Back to admin home</h2></a>
+    <hr />
+    <form role="form" class="form-horizontal" id="new_faculty" action="new_faculty" method="post">
+      <div class="form-group has-error">
+        <label for="uniqname" class="col-sm-2 control-label">uniqname: </label>
+        <div class="col-sm-3">
+          <input type="text" name="uniqname" class="form-control valid-if-any-text">
+        </div>
+        <button class="btn-default col-sm-2" form="new_faculty">Add new faculty</button>
+      </div>
+    </form>
+    <div class="containter">
+      <div class="row" tal:repeat="fac faculty">
+        <div class="col-lg-2">${fac.uniqname}</div>
+      </div>
+    </div>
+  </div>
+</html>

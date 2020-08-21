@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html metal:use-macro="load: main.pt">
+  <div metal:fill-slot="head">
+    <title>UM CSE Prelims Set Up Valid Times</title>
+    <link href="/static/calendar.css" rel="stylesheet">
+  </div>
+
+  <div metal:fill-slot="content">
+    <h1>Configure Event: ${name}</h1>
+    <p>You can mark some times as bad for everyone (e.g. faculty meetings) in advance
+    on this page.</p>
+    <p>You can "paint" over time slots by clicking and dragging with the mouse.<p>
+
+    <form role="form" id="event_form"
+      action="${mode}_event" method="post"
+      onsubmit="return add_data_to_post()">
+
+      <button type="submit" class="btn btn-primary">Save Event</button>
+
+      <div>
+        ${structure: weeks}
+      </div>
+
+      ${structure: hidden_inputs}
+
+      <button type="submit" class="btn btn-primary">Save Event</button>
+    </form>
+  </div>
+
+  <div metal:fill-slot="footer_js">
+    <script src="/static/calendar.js"></script>
+    <script>
+      function add_data_to_post() {
+        var blackouts = '';
+        $("td").each(function(index) {
+          var bg = $(this).css("background-color");
+          if (bg == 'rgb(255, 0, 0)') {
+            blackouts += $(this).attr("id") + " ";
+          }
+        });
+        $('<input />').attr('type', 'hidden').attr('name', 'blackouts').attr('value', blackouts).appendTo('#event_form');
+
+        return true;
+      }
+    </script>
+  </div>
+</html>

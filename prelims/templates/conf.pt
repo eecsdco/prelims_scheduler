@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html metal:use-macro="load: main.pt">
+  <div metal:fill-slot="head">
+    <title>UM CSE Prelims Availability Configuration</title>
+    <link href="/static/calendar.css" rel="stylesheet">
+  </div>
+
+  <div metal:fill-slot="content">
+    <h1>Prelims Admin View</h1>
+
+    <hr />
+
+    <a href="/admin/edit_faculty"><h2>Edit Faculty List</h2></a>
+
+    <hr />
+
+    <div id="conf_new_event">
+      <a href="#" onclick='$("#conf_new_form").toggle("slow")'><h2>Create New Event</h2></a>
+      <form role="form" class="form-horizontal" id="conf_new_form"
+        tal:attributes="style 'display:none' if len(events) else default"
+        action="new_event" method="post" onsubmit="return validate_new_event()"
+        >
+        <div class="form-group has-error">
+          <label for="new_event_name" class="col-sm-2 control-label">Event name: </label>
+          <div class="col-sm-10">
+            <input type="text" name="new_event_name" class="form-control valid-if-any-text" placeholder="Prelims Spring 2014">
+          </div>
+        </div>
+
+        <div class="form-group has-success">
+          <label for="new_time_slot_size" class="col-sm-2 control-label">Time Slot Size: </label>
+          <div class="col-sm-10">
+            <select name="new_time_slot_size" class="form-control">
+              <option value="15">15 Minutes</option>
+              <option value="30" selected>30 Minutes</option>
+              <option value="45">45 Minutes</option>
+              <option value="60">1 Hour</option>
+              <option value="90">1.5 Hours</option>
+              <option value="120">2 Hours</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group has-error">
+          <label for="new_start_date" class="col-sm-2 control-label">Start Date:</label>
+          <div class="col-sm-10 input-append date" id="new_start_date_div">
+            <input type="text" class="form-control valid-if-any-text" data-date-format="yyyy-mm-dd" id="new_start_date" name="new_start_date">
+          </div>
+        </div>
+
+        <div class="form-group has-error">
+          <label for="new_end_date" class="col-sm-2 control-label">End Date:</label>
+          <div class="col-sm-10 input-append date" id="new_end_div">
+            <input type="text" class="form-control" data-date-format="yyyy-mm-dd" id="new_end_date" name="new_end_date">
+          </div>
+        </div>
+
+        <div class="form-group has-success">
+          <label for="new_start_time" class="col-sm-2 control-label">Day Starts At: </label>
+          <div class="col-sm-10">
+            <select name="new_start_time" class="form-control">
+              <option value="0700">7:00 AM</option>
+              <option value="0730">7:30 AM</option>
+              <option value="0800" selected>8:00 AM</option>
+              <option value="0830">8:30 AM</option>
+              <option value="0900">9:00 AM</option>
+              <option value="0930">9:30 AM</option>
+              <option value="1000">10:00 AM</option>
+              <option value="1030">10:30 AM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group has-success">
+          <label for="new_end_time" class="col-sm-2 control-label">Day Ends At: </label>
+          <div class="col-sm-10">
+            <select name="new_end_time" class="form-control">
+              <option value="1500">3:00 PM</option>
+              <option value="1530">3:30 PM</option>
+              <option value="1600">4:00 PM</option>
+              <option value="1630">4:30 PM</option>
+              <option value="1700" selected>5:00 PM</option>
+              <option value="1730">5:30 PM</option>
+              <option value="1800">6:00 PM</option>
+              <option value="1830">6:30 PM</option>
+              <option value="1900">7:00 PM</option>
+              <option value="1930">7:30 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- TODO: Expose weekend support when it's fully implemented -->
+        <input type="hidden" name="new_weekends" value="false" />
+
+        <button type="submit" class="btn btn-primary">Create This Event</button>
+      </form>
+      <br />
+      <br />
+    </div>
+
+    <hr />
+
+    ${structure: events}
+  </div>
+
+  <div metal:fill-slot="footer_js">
+    <script src="/static/conf.js"></script>
+    <script>
+      function validate_new_event() {
+        console.log("validating form...")
+        var req_met = true;
+        $(".has-error").each(function(index) {
+          console.log(this);
+          req_met = false;
+          return false;
+        });
+        if (!req_met) {
+          alert("All required fields must be filled out (label will turn green)");
+        }
+        console.log("validate_new_event: " + req_met);
+        return req_met;
+      }
+
+      /* Adapted from eyecon.ro/bootstrap-datepicker check-in sample */
+      var nowTemp = new Date();
+      var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+      var start_day = $('#new_start_date').datepicker({
+        onRender: function(date) {
+          return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        }
+      }).on('changeDate', function(ev) {
+        if (ev.date.valueOf() > end_day.date.valueOf()) {
+          var newDate = new Date(ev.date);
+          newDate.setDate(newDate.getDate() + 1);
+          end_day.setValue(newDate);
+        }
+
+        var valid_div = $(this).closest('div.has-error, div.has-success')
+        valid_div.toggleClass('has-error', false);
+        valid_div.toggleClass('has-success', true);
+
+        start_day.hide();
+        $('#new_end_date')[0].focus();
+      }).data('datepicker');
+
+      var end_day = $('#new_end_date').datepicker({
+        onRender: function(date) {
+          return date.valueOf() <= start_day.date.valueOf() ? 'disabled' : '';
+        }
+      }).on('changeDate', function(ev) {
+        var valid_div = $(this).closest('div.has-error, div.has-success')
+        valid_div.toggleClass('has-error', false);
+        valid_div.toggleClass('has-success', true);
+
+        end_day.hide();
+      }).data('datepicker');
+
+    $(document).ready(function() {
+      ${extra_js}
+    });
+    </script>
+  </div>
+</html>

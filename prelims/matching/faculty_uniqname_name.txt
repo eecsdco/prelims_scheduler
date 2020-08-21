@@ -1,0 +1,69 @@
+jabernet	Jacob  Abernethy
+ackerm	Mark S. Ackerman
+austin	Todd  Austin
+baveja	Satinder Singh Baveja
+mibailey	Mike Bailey
+smash	Ashley Andreae
+valeria	Valeria  Bertacco
+blaauw	David Blaauw
+michjc	Michael J. Cafarella
+pmchen	Peter M. Chen
+kjc	Kevin J. Compton
+jiadeng	Jia  Deng
+dickrp	Robert Dick
+rdreslin	Ron Dreslinski
+durfee	Edmund H Durfee
+prabal	Prabal  Dutta
+gessl	Georg  Essl
+jflinn	Jason  Flinn
+kevinfu	Kevin  Fu
+jhalderm	J. Alex  Halderman
+jhayes	John P. Hayes
+hero	Alfred O. Hero
+jag	H V Jagadish
+farnam	Farnam  Jahanian
+sugih	Sugih  Jamin
+kieras	David E. Kieras
+kuipers	Benjamin  Kuipers
+stephane	Stephane  Lafortune
+laird	John E. Laird
+honglak	Honglak  Lee
+mingyan	Mingyan  Liu
+mahlke	Scott  Mahlke
+zmao	Zhuoqing Morley  Mao
+imarkov	Igor  Markov
+profmars	Jason  Mars
+mazum	Pinaki  Mazumder
+mihalcea	Rada  Mihalcea
+mozafari	Barzan  Mozafari
+tnm	Trevor  Mudge
+nsatish	Satish  Narayanasamy
+bnoble	Brian  Noble
+ebolson	Edwin  Olson
+marios	Marios  Papaefthymiou
+pettie	Seth  Pettie
+aprakash	Atul  Prakash
+emilykmp	Emily  Mower Provost
+radev	Drago Radev
+karem	Karem A. Sakallah
+schoeneb	Grant  Schoenebeck
+shiyy	Yaoyun  Shi
+kgshin	Kang G. Shin
+soloway	Elliot  Soloway
+qstout	Quentin F. Stout
+martinjs	Martin J. Strauss
+zhs	Zeeshan H. Syed
+lingjia	Lingjia  Tang
+teneket	Demosthenis  Teneketzis
+ghw	Gregory H. Wakefield
+wellman	Michael  Wellman
+twenisch	Thomas F. Wenisch
+jcpatt	Jessica  Patterson
+moultond	Dia  Moulton
+reetudas	Reetuparna  Das
+ocj	Chad  Jenkins
+dkoutra	Danai  Koutra
+wlasecki	Walter  Lasecki
+cpeikert	Chris  Peikert
+wiensj	Jenna Wiens
+mosharaf	Mosharaf  Chowdhury

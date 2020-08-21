@@ -1,0 +1,10 @@
+<div id="week_${w}">
+
+  <h3>${week_str}</h3>
+  <table class="week">
+    <tr><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr>
+
+    ${structure: entries}
+  </table>
+
+</div>

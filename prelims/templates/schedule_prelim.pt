@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html metal:use-macro="load: main.pt">
+  <div metal:fill-slot="head">
+    <title>UM CSE Prelims Select a Meeting Time</title>
+  </div>
+
+  <div metal:fill-slot="content">
+    <!-- Put your content here -->
+
+    <!-- A stub form. Note the variable passing from python, and that we're passing
+    through some information page-to-page as hidden form elements -->
+    <form role="form" action="select_prelim" method="post">
+      <input type="hidden" name="event_id" value="${event.id}" />
+    </form>
+  </div>
+
+  <div metal:fill-slot="footer_js">
+    <!-- If you need to add javascript, put it here after jQuery et al have loaded -->
+  </div>
+</html>
+

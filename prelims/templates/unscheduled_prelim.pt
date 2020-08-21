@@ -1,0 +1,60 @@
+<div id="event_${event.id}_unscheduled_${student}">
+  <div class="row row-vertical-padded">
+    <div class="col-lg-1">
+      <form role="form" class="form-horizontal delete_unscheduled_prelim_form"
+        action="/delete_unscheduled_prelim" method="post"
+        >
+        <input type="hidden" name="prelim_id" value="${prelim.id}">
+        <input type="hidden" name="event_id" value="${event.id}">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    </div>
+    <div class="col-lg-8">
+      <div class="row">
+        <label class="col-lg-2"><strong>${student}</strong></label>
+        <div tal:repeat="f fac" tal:content="f" class="col-lg-2"></div>
+        <div tal:content="f_alt" class="col-lg-2" style="color: grey;"></div>
+      </div>
+      <div class="row">
+        <div class=" col-lg-10">
+          <a href="#" class="prelim_title" id="prelim_${prelim.id}_title"
+            data-type="text" data-pk="${prelim.id}" data-url="/update_prelim_title" data-emptytext="No Title"
+            tal:content="prelim.title"
+            ></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-1">
+      <div class="row" id="${event.id}_${prelim.id}_paper_url">
+        <a tal:condition="paper_url" tal:attributes="href paper_url">${prelim.student_uniqname}.pdf</a>
+        <p tal:condition="not:paper_url">(no pdf)</p>
+      </div>
+      <div class="row" id="${event.id}_${prelim.id}_paper_url_msg">
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <form enctype="multipart/form-data">
+        <!--
+        <div class="input-group">
+          <span class="input-group-btn">
+            <span class="btn btn-default btn-file">
+              Choose File&hellip; <input type="file" multiple>
+            </span>
+          </span>
+          <input type="text" class="form-control" readonly>
+          <span class="input-group-btn">
+            <span class="btn btn-primary btn-file upload_prelim_pdf">
+              Upload
+            </span>
+          </span>
+        </div>
+        -->
+        <span class="file-input btn btn-primary btn-file upload_prelim_pdf">
+          Upload pdf <input type="file" name="file_obj">
+        </span>
+        <input type="hidden" name="event_id" value="${event.id}" />
+        <input type="hidden" name="prelim_id" value="${prelim.id}" />
+      </form>
+    </div>
+  </div>
+</div>

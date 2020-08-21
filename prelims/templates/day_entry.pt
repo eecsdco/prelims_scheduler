@@ -1,0 +1,2 @@
+<td id="${ts_id}_${time}" tal:attributes="class cls">${disp_time}</td>
+

@@ -1,0 +1,17 @@
+(1) Get on "horton.eecs.umich.edu" as root
+(2) start a "screen" session
+(3) run the commands exactly as below
+
+cd /home/don/prelims_scheduler
+virtualenv --no-site-packages venv_prelims
+source venv_prelims/bin/activate
+python setup.py develop
+initialize_prelims_db development.ini
+pserve development.ini --reload
+
+(4) detach your screen session
+(5) log out of horton
+
+If you can connect to:
+http://horton.eecs.umich.edu:6543
+Then all is well!

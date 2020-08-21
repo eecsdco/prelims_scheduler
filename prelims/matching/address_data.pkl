@@ -1,0 +1,234 @@
+(dp0
+S'mozafari'
+p1
+V4769 Beyster Bldg.
+p2
+sS'laird'
+p3
+V3753 Beyster Bldg.
+p4
+sS'radev'
+p5
+V3917 Beyster Bldg.
+p6
+sS'profmars'
+p7
+V4705 Beyster Bldg.
+p8
+sS'gessl'
+p9
+V3624 Beyster Bldg.
+p10
+sS'bnoble'
+p11
+V4753 Beyster Bldg.
+p12
+sS'marios'
+p13
+V3713 Beyster Bldg.
+p14
+sS'jflinn'
+p15
+V4641 Beyster Bldg.
+p16
+sS'baveja'
+p17
+V3749 Beyster Bldg.
+p18
+sS'ebolson'
+p19
+V3737 Beyster Bldg.
+p20
+sS'karem'
+p21
+V4603 Beyster Bldg.
+p22
+sS'zmao'
+p23
+V4629 Beyster Bldg.
+p24
+sS'mahlke'
+p25
+V4633 Beyster Bldg.
+p26
+sS'pollackm'
+p27
+V3052 Fleming Administration Bldg.
+p28
+sS'honglak'
+p29
+V3773 Beyster Bldg.
+p30
+sS'kieras'
+p31
+V3641 Beyster Bldg.
+p32
+sS'soloway'
+p33
+V3629 Beyster Bldg.
+p34
+sS'jiadeng'
+p35
+V3765 Beyster
+p36
+sS'schoeneb'
+p37
+V3640 Beyster Bldg
+p38
+sS'mazum'
+p39
+V4765 Beyster Bldg.
+p40
+sS'stephane'
+p41
+V4415 EECS
+p42
+sS'jag'
+p43
+V4601 Beyster Bldg.
+p44
+sS'lingjia'
+p45
+V4609 Beyster Bldg.
+p46
+sS'teneket'
+p47
+V4413 EECS
+p48
+sS'emilykmp'
+p49
+V3620 Beyster Bldg.
+p50
+sS'jhalderm'
+p51
+V4717 Beyster Bldg.
+p52
+sS'pettie'
+p53
+V3628 Beyster
+p54
+sS'hero'
+p55
+V4417 EECS
+p56
+sS'valeria'
+p57
+V4645 Beyster Bldg.
+p58
+sS'jhayes'
+p59
+V4713 Beyster Bldg.
+p60
+sS'nsatish'
+p61
+V4721 Beyster Bldg.
+p62
+sS'kgshin'
+p63
+V4605 Beyster Bldg.
+p64
+sS'tnm'
+p65
+V4757 Beyster Bldg.
+p66
+sS'mingyan'
+p67
+V4427 EECS
+p68
+sS'jabernet'
+p69
+V3765 Beyster
+p70
+sS'qstout'
+p71
+V3605 Beyster Bldg.
+p72
+sS'kevinfu'
+p73
+V4628 Beyster Bldg.
+p74
+sS'martinjs'
+p75
+V3063 East Hall
+p76
+sS'aprakash'
+p77
+V4741 Beyster Bldg.
+p78
+sS'farnam'
+p79
+V3601 Beyster Bldg.
+p80
+sS'michjc'
+p81
+V4709 Beyster Bldg.
+p82
+sS'sugih'
+p83
+V4737 Beyster Bldg.
+p84
+sS'mihalcea'
+p85
+V3769 Beyster Bldg.
+p86
+sS'atkins'
+p87
+V300 West Hall
+p88
+sS'kjc'
+p89
+V3603 Beyster Bldg.
+p90
+sS'zhs'
+p91
+V3777 Beyster Bldg.
+p92
+sS'ghw'
+p93
+V3637 Beyster
+p94
+sS'durfee'
+p95
+V3745 Beyster Bldg.
+p96
+sS'prabal'
+p97
+V4773 Beyster Bldg.
+p98
+sS'kuipers'
+p99
+V3741 Beyster Bldg.
+p100
+sS'twenisch'
+p101
+V4620 Beyster Bldg.
+p102
+sS'ackerm'
+p103
+V3645 Beyster
+p104
+sS'imarkov'
+p105
+V4749 Beyster Bldg.
+p106
+sS'wellman'
+p107
+V3757 Beyster Bldg.
+p108
+sS'jholland'
+p109
+V1255 East Hall
+p110
+sS'shiyy'
+p111
+V3632 Beyster Bldg.
+p112
+sS'austin'
+p113
+V4637 Beyster Bldg.
+p114
+sS'pmchen'
+p115
+V4640 Beyster Bldg.
+p116
+s.

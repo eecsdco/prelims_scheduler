@@ -1,0 +1,36 @@
+.week td, .week th {
+  width: 100px;
+  text-align: center;
+
+  /* Disable highlighting:
+   * stackoverflow.com/q/826782 */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.week td {
+  background-color: #ddd;
+  border: 3px solid white;
+}
+
+.week_disabled td {
+  background-color: #888;
+}
+
+td.busy_time_slot {
+  background-color: #f00;
+}
+
+td.free_time_slot {
+  background-color: #0f0;
+}
+
+td.disable_time_slot {
+  color: #fff;
+  background-color: #fff;
+}
+

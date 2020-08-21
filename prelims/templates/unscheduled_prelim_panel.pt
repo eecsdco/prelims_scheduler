@@ -1,0 +1,18 @@
+<div id="event_${event.id}_unscheduled_${student}">
+  <div class="row">
+    <label class="col-xs-2"><strong>${student}</strong></label>
+    <div tal:repeat="f fac" tal:content="f" class="col-xs-2"></div>
+    <div tal:content="f_alt" class="col-xs-2" style="color: grey;"></div>
+    <div class="col-xs-2"></div>
+  </div>
+  <div class="row" tal:condition="prelim.title">
+    <div class="col-xs-10">
+      <em><p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" tal:content="prelim.title" /></em>
+    </div>
+    <div class="col-xs-2">
+      <a tal:condition="paper_url" tal:attributes="href paper_url">paper</a>
+      <p tal:condition="not:paper_url">(no pdf)</p>
+    </div>
+  </div>
+</div>
+

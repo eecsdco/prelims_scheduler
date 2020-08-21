@@ -1,0 +1,7 @@
+<tr>
+  <td id="${ts_id_m}_${time}" tal:attributes="class m_cls">${disp_time}</td>
+  <td id="${ts_id_t}_${time}" tal:attributes="class t_cls">${disp_time}</td>
+  <td id="${ts_id_w}_${time}" tal:attributes="class w_cls">${disp_time}</td>
+  <td id="${ts_id_r}_${time}" tal:attributes="class r_cls">${disp_time}</td>
+  <td id="${ts_id_f}_${time}" tal:attributes="class f_cls">${disp_time}</td>
+</tr>

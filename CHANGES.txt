@@ -18,3 +18,4 @@ After installing the packages, start the venv: source venv/Scripts/activate
 Then copy exampledb.sqlite as prelims.sqlite
 Start the server: pserve development.ini --reload
 
+horton.eecs.umich.edu:6543/

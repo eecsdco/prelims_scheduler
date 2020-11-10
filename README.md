@@ -78,6 +78,9 @@ rebuild.
 If you're going to be debugging this on a remote machine, be sure to add your
 local machine to the `debugtoolbar.hosts` entry in `development.ini`.
 
+In `development.ini`, there is a variable, `dev_user`, that is logged in 
+automatically when in development mode.
+
 ### That's it!
 
 You should be able to visit the site at <localhost:6543/>.

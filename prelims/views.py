@@ -192,13 +192,22 @@ def render_event(event, uniqname=None, blackout_as_busy=False):
 def login_view(request):
     try:
         uniqname = request.GET['uniqname']
+
         if uniqname == 'smash':
             return HTTPFound(location='/conf.html')
         DBSession.query(Faculty).filter_by(uniqname=uniqname).one()
         request.session['uniqname'] = uniqname
         return HTTPFound(location='/calendar.html')
     except KeyError:
-        return {'why_failed': 'uniqname is required'}
+        try:
+            uniqname = request.registry.settings['dev_user']
+            if uniqname == 'smash':
+                return HTTPFound(location='/conf.html')
+            DBSession.query(Faculty).filter_by(uniqname=uniqname).one()
+            request.session['uniqname'] = uniqname
+            return HTTPFound(location='/calendar.html')
+        except KeyError:
+            return {'why_failed': 'uniqname is required'}
     except NoResultFound:
         return {'why_failed': uniqname + ' is not a faculty uniqname. If yours is missing, please e-mail Ashley (smash@umich.edu)'}
     return {'why_failed': ''}

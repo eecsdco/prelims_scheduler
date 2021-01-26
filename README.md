@@ -81,6 +81,12 @@ local machine to the `debugtoolbar.hosts` entry in `development.ini`.
 In `development.ini`, there is a variable, `dev_user`, that is logged in 
 automatically when in development mode.
 
+#### Docker
+
+This application can be run inside of a Docker container as of 1/25/21. It seems to be working for the most part anyway.
+
+Just run   `docker-compose build && docker-compose up` inside the root project directory. Make sure Docker is installed on your machine first...
+
 ### That's it!
 
 You should be able to visit the site at <localhost:6543/>.

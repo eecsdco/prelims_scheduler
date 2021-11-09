@@ -30,3 +30,4 @@
 prelims.egg-info
 prelims.sqlite
 venv_prelims
+.idea/

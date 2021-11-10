@@ -30,5 +30,7 @@
 prelims.egg-info
 prelims.sqlite
 venv_prelims
+venv_prelims_38
 .idea
 venv/
+.DS_Store

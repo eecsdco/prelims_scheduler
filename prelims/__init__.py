@@ -1,4 +1,4 @@
-from pyramid.session import UnencryptedCookieSessionFactoryConfig
+from pyramid.session import SignedCookieSessionFactory
 from pyramid.config import Configurator
 from sqlalchemy import engine_from_config
 
@@ -14,7 +14,7 @@ def main(global_config, **settings):
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.bind = engine
-    unsec_session_factory = UnencryptedCookieSessionFactoryConfig('prelims_cookie')
+    unsec_session_factory = SignedCookieSessionFactory('prelims_cookie')
     config = Configurator(settings=settings, session_factory = unsec_session_factory)
     config.include('pyramid_chameleon')
     config.add_static_view('static', 'static', cache_max_age=3600)

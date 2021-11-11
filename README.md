@@ -24,11 +24,7 @@ need to install it: `sudo pip install virtualenv`.
 Create a virtual environment for this project:
 
     # venv_prelims is the name of the directory that will be created
-    virtualenv --no-site-packages venv_prelims
-
-__The --no-site-packages flag is VERY important. It makes this a "private"
-virtualenv so that python doesn't try to use any of your globally installed
-modules. Things will almost certainly break without this flag.__
+    python -m venv venv_prelims
 
 Next we need to "activate" this virtual environment. This is done on a
 _per-shell_ basis (it will update your `$PS1` automatically). There are tools

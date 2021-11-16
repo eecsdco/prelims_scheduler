@@ -194,7 +194,7 @@ def render_event(event, uniqname=None, blackout_as_busy=False):
 @view_config(route_name='login', renderer='templates/login.pt')
 def login_view(request):
     try:
-        if dev_user:
+        if socket.gethostname() != 'horton' and dev_user:
             uniqname = dev_user
         else:
             uniqname = request.GET['uniqname']
@@ -205,7 +205,7 @@ def login_view(request):
         request.session['uniqname'] = uniqname
         return HTTPFound(location='/calendar.html')
     except KeyError:
-        return {'why_failed': socket.gethostname()}
+        return {'why_failed': 'uniqname is required'}
     except NoResultFound:
         return {'why_failed': uniqname + ' is not a faculty uniqname. If yours is missing, please e-mail Ashley (smash@umich.edu)'}
     return {'why_failed': ''}

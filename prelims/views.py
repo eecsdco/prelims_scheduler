@@ -24,6 +24,8 @@ from .models import (
     PrelimAssignment,
     )
 
+from prelims.dev_conf import dev_user
+
 import logging
 log = logging.getLogger(__name__)
 
@@ -191,7 +193,11 @@ def render_event(event, uniqname=None, blackout_as_busy=False):
 @view_config(route_name='login', renderer='templates/login.pt')
 def login_view(request):
     try:
-        uniqname = request.GET['uniqname']
+        if dev_user:
+            uniqname = dev_user
+        else:
+            uniqname = request.GET['uniqname']
+
         if uniqname == 'smash':
             return HTTPFound(location='/conf.html')
         DBSession.query(Faculty).filter_by(uniqname=uniqname).one()

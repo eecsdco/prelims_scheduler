@@ -33,6 +33,7 @@ import os
 import datetime
 import nptime
 import time
+import socket
 
 def render_date_range_to_weeks(start_date, end_date, start_time, end_time,
         interval_in_minutes, show_weekends=False):
@@ -204,7 +205,7 @@ def login_view(request):
         request.session['uniqname'] = uniqname
         return HTTPFound(location='/calendar.html')
     except KeyError:
-        return {'why_failed': 'uniqname is required'}
+        return {'why_failed': socket.gethostname()}
     except NoResultFound:
         return {'why_failed': uniqname + ' is not a faculty uniqname. If yours is missing, please e-mail Ashley (smash@umich.edu)'}
     return {'why_failed': ''}

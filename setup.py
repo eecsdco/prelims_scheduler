@@ -17,8 +17,7 @@ requires = [
     'SQLAlchemy',
     'transaction',
     'zope.sqlalchemy',
-    'waitress',
-    'gunicorn'
+    'waitress'
     ]
 
 setup(name='prelims',

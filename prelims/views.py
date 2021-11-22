@@ -32,6 +32,7 @@ import os
 import datetime
 import nptime
 import time
+import socket
 
 def render_date_range_to_weeks(start_date, end_date, start_time, end_time,
         interval_in_minutes, show_weekends=False):
@@ -192,7 +193,7 @@ def render_event(event, uniqname=None, blackout_as_busy=False):
 @view_config(route_name='login', renderer='templates/login.pt')
 def login_view(request):
     try:
-        if dev_user:
+        if socket.gethostname() != 'horton' and dev_user:
             uniqname = dev_user
         else:
             uniqname = request.GET['uniqname']

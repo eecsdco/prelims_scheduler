@@ -8,6 +8,13 @@ frameworks are to tease apart data backends (models), website logic
 it can be a little intimidating to see how everything goes together to build
 things at first, I'll try to give a simple overview.
 
+Updates Nov. 2021
+---------------
+- This project now requires Python3 to run.
+- Pserve now uses 'gunicorn' instead of 'waitress' to serve up the application because gunicorn supports SSL whereas waitress does not. This dependency was added in setup.py.
+- Added 'setuptools' to setup.py as it was required by Python3.
+- The project is protected behind a Shibboleth login. The directory for shibboleth is /var/www/html/secure. Laura has it redirecting appropriately to <https://horton.eecs.umich.edu:6543>. 
+
 Getting Started
 ---------------
 
@@ -16,10 +23,8 @@ Web framework pieces tend to have relatively high churn without the highest
 emphasis on backwards compatability, the solution is to have one python
 environment for each website (a "virtualenv").
 
-### Virtualenv
 
-If you're on Python 3.4+, virtualenv is already built in. Otherwise you will
-need to install it: `sudo pip install virtualenv`.
+### Virtualenv
 
 Create a virtual environment for this project:
 
@@ -74,7 +79,13 @@ rebuild.
 If you're going to be debugging this on a remote machine, be sure to add your
 local machine to the `debugtoolbar.hosts` entry in `development.ini`.
 
+### SSL Keys
+
+Whether running this app locally or on the server, make sure to have the following keys in place:
+- /etc/ssl/certs/all.cert
+- /etc/ssl/private/key.pem 
+
 ### That's it!
 
-You should be able to visit the site at <localhost:6543/>.
+You should be able to visit the site at <https://0.0.0.0:6543/> locally or on horton at <http://horton.eecs.umich.edu:6543>.
 

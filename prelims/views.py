@@ -209,10 +209,10 @@ def login_view(request):
         return {'why_failed': uniqname + ' is not a faculty uniqname. If yours is missing, please e-mail Ashley (smash@umich.edu)'}
     return {'why_failed': ''}
 
-@view_config(route_name='logout', request_method='POST')
-def logout_view(request):
-    request.session.invalidate()
-    return HTTPFound(location='/')
+# @view_config(route_name='logout', request_method='POST')
+# def logout_view(request):
+#     request.session.invalidate()
+#     return HTTPFound(location='/')
 
 def render_prelims(DBSession, event, query):
     prelims_html = ''

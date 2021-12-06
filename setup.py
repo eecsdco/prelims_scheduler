@@ -10,6 +10,7 @@ with open(os.path.join(here, 'CHANGES.txt')) as f:
 
 requires = [
     'nptime',
+    'setuptools',
     'pyramid',
     'pyramid_chameleon',
     'pyramid_debugtoolbar',
@@ -17,7 +18,7 @@ requires = [
     'SQLAlchemy',
     'transaction',
     'zope.sqlalchemy',
-    'waitress'
+    'gunicorn'
     ]
 
 setup(name='prelims',

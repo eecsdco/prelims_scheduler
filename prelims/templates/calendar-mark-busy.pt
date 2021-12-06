@@ -19,11 +19,12 @@
     <div class="well">
       <div style="overflow: hidden;">
         <p class="btn" style="float: left;">Currently logged in as ${request.session['uniqname']}.</p>
-        <form role="form" class="form-horizontal" id="logout_form" style="float: right;"
-          action="logout" method="post" onsubmit="return check_for_unsaved()"
-          >
-          <button type="submit" class="btn btn-default">Logout</button>
-        </form>
+<!--?        <form role="form" class="form-horizontal" id="logout_form" style="float: right;"-->
+<!--?          action="logout" method="post" onsubmit="return check_for_unsaved()"-->
+<!--?          >-->
+<!--?          <button type="submit" class="btn btn-default">Logout</button>-->
+<!--?        </form>-->
+        <a class="btn btn-default" style="float: right;" href="https://weblogin.umich.edu/logout">Logout</a>
       </div>
     </div>
 

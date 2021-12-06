@@ -25,12 +25,13 @@ from sqlalchemy.schema import (
     UniqueConstraint,
     )
 
-from zope.sqlalchemy import ZopeTransactionExtension
+from zope.sqlalchemy import register
 
 import logging
 log = logging.getLogger(__name__)
 
-DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
+DBSession = scoped_session(sessionmaker(autoflush=False))
+register(DBSession)
 Base = declarative_base()
 
 class Event(Base):

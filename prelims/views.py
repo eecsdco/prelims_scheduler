@@ -23,6 +23,7 @@ from .models import (
     TimeSlot,
     PrelimAssignment,
     )
+from prelims.dev_conf import (dev_user)
 
 from prelims.dev_conf import dev_user
 
@@ -197,7 +198,7 @@ def login_view(request):
         if socket.gethostname() != 'horton' and dev_user:
             uniqname = dev_user
         else:
-            uniqname = request.GET['uniqname']
+            uniqname = request.environ['REMOTE_USER'].split('@')[0]
 
         if uniqname == 'smash':
             return HTTPFound(location='/conf.html')
@@ -205,15 +206,15 @@ def login_view(request):
         request.session['uniqname'] = uniqname
         return HTTPFound(location='/calendar.html')
     except KeyError:
-        return {'why_failed': 'uniqname is required'}
+        return {'why_failed': 'uniqname is required' }
     except NoResultFound:
         return {'why_failed': uniqname + ' is not a faculty uniqname. If yours is missing, please e-mail Ashley (smash@umich.edu)'}
     return {'why_failed': ''}
 
-@view_config(route_name='logout', request_method='POST')
-def logout_view(request):
-    request.session.invalidate()
-    return HTTPFound(location='/')
+# @view_config(route_name='logout', request_method='POST')
+# def logout_view(request):
+#     request.session.invalidate()
+#     return HTTPFound(location='/')
 
 def render_prelims(DBSession, event, query):
     prelims_html = ''

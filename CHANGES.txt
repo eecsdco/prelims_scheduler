@@ -2,3 +2,20 @@
 ---
 
 -  Initial version
+
+0.5
+---
+
+- 9/8/20 CP: in prelims/models.py, changed import of 'ZopeTransactionExtension' to 'register'
+because pserve development.ini --reload was throwing an error:
+ImportError: cannot import name 'ZopeTransactionExtension' from 'zope.sqlalchemy'
+Solution found: https://github.com/zopefoundation/zope.sqlalchemy/issues/37
+
+- Setup notes:
+You can follow the README.md file with these modifications:
+CP used PyCharm and setup the virtualenv by going to Settings/Preferences > Project:prelims_scheduler > Project Interpreter. Use Python 3.7
+After installing the packages, start the venv: source venv/Scripts/activate
+Then copy exampledb.sqlite as prelims.sqlite
+Start the server: pserve development.ini --reload
+
+horton.eecs.umich.edu:6543/

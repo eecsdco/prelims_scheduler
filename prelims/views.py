@@ -196,7 +196,7 @@ def login_view(request):
         if socket.gethostname() != 'horton' and dev_user:
             uniqname = dev_user
         else:
-            uniqname = request.GET['uniqname']
+            uniqname = request.environ['REMOTE_USER'].split('@')[0]
 
         if uniqname == 'smash':
             return HTTPFound(location='/conf.html')
@@ -204,7 +204,7 @@ def login_view(request):
         request.session['uniqname'] = uniqname
         return HTTPFound(location='/calendar.html')
     except KeyError:
-        return {'why_failed': 'uniqname is required'}
+        return {'why_failed': 'uniqname is required' }
     except NoResultFound:
         return {'why_failed': uniqname + ' is not a faculty uniqname. If yours is missing, please e-mail Ashley (smash@umich.edu)'}
     return {'why_failed': ''}

@@ -200,7 +200,7 @@ def login_view(request):
         else:
             uniqname = request.environ['REMOTE_USER'].split('@')[0]
 
-        if uniqname == 'smash':
+        if uniqname == 'smash' or uniqname == 'jstubb' or uniqname == 'cpuzzuol':
             return HTTPFound(location='/conf.html')
         DBSession.query(Faculty).filter_by(uniqname=uniqname).one()
         request.session['uniqname'] = uniqname

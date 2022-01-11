@@ -717,13 +717,12 @@ def calendar_view(request):
 
 @view_config(route_name="update_times", request_method='POST')
 def update_times(request):
-    def find_or_make_time_slot(event_id, uniqname, ts, busy):
+    def find_or_make_time_slot(event_id, uniqname, ts):
         try:
             time_slot = DBSession.query(TimeSlot).\
                     filter_by(event_id=event_id).\
                     filter_by(uniqname=uniqname).\
                     filter_by(time_slot=ts).\
-                    filter_by(mark_busy=busy).\
                     one()
         except NoResultFound:
             time_slot = TimeSlot(event_id=event_id, time_slot=ts, uniqname=uniqname)
@@ -741,7 +740,7 @@ def update_times(request):
             time = datetime.time(*map(int, time.split('-')))
             ts = datetime.datetime.combine(date, time)
 
-            time_slot = find_or_make_time_slot(event_id, uniqname, ts, True)
+            time_slot = find_or_make_time_slot(event_id, uniqname, ts)
 
             if time_slot.prelim_id != None:
                 # Someone got cute and circumvented to JS to try to delete a
@@ -750,20 +749,20 @@ def update_times(request):
 
             time_slot.mark_busy = True
 
-        for unmarked in request.POST['busy_times'].split():
-            ts, event_id, date, time = unmarked.split('_')
-            date = datetime.date(*map(int, date.split('-')))
-            time = datetime.time(*map(int, time.split('-')))
-            ts = datetime.datetime.combine(date, time)
-
-            time_slot = find_or_make_time_slot(event_id, uniqname, ts, None)
-
-            if time_slot.prelim_id != None:
-                # Someone got cute and circumvented to JS to try to delete a
-                # scheduled meeting, reject that
-                raise ValueError("Attempt to delete scheduled meeting")
-
-            time_slot.mark_busy = None
+        # for unmarked in request.POST['busy_times'].split():
+        #     ts, event_id, date, time = unmarked.split('_')
+        #     date = datetime.date(*map(int, date.split('-')))
+        #     time = datetime.time(*map(int, time.split('-')))
+        #     ts = datetime.datetime.combine(date, time)
+        #
+        #     time_slot = find_or_make_time_slot(event_id, uniqname, ts)
+        #
+        #     if time_slot.prelim_id != None:
+        #         # Someone got cute and circumvented to JS to try to delete a
+        #         # scheduled meeting, reject that
+        #         raise ValueError("Attempt to delete scheduled meeting")
+        #
+        #     time_slot.mark_busy = None
 
         for free in request.POST['free_times'].split():
             ts, event_id, date, time = free.split('_')
@@ -771,7 +770,7 @@ def update_times(request):
             time = datetime.time(*map(int, time.split('-')))
             ts = datetime.datetime.combine(date, time)
 
-            time_slot = find_or_make_time_slot(event_id, uniqname, ts, False)
+            time_slot = find_or_make_time_slot(event_id, uniqname, ts)
 
             time_slot.mark_busy = False
     except:

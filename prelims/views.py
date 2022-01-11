@@ -200,7 +200,7 @@ def login_view(request):
         else:
             uniqname = request.environ['REMOTE_USER'].split('@')[0]
 
-        if uniqname == 'smash' or uniqname == 'jstubb' or uniqname == 'cpuzzuol':
+        if uniqname == 'smash' or uniqname == 'jstubb':
             return HTTPFound(location='/conf.html')
         DBSession.query(Faculty).filter_by(uniqname=uniqname).one()
         request.session['uniqname'] = uniqname
@@ -717,12 +717,13 @@ def calendar_view(request):
 
 @view_config(route_name="update_times", request_method='POST')
 def update_times(request):
-    def find_or_make_time_slot(event_id, uniqname, ts):
+    def find_or_make_time_slot(event_id, uniqname, ts, busy):
         try:
             time_slot = DBSession.query(TimeSlot).\
                     filter_by(event_id=event_id).\
                     filter_by(uniqname=uniqname).\
                     filter_by(time_slot=ts).\
+                    filter_by(mark_busy=busy).\
                     one()
         except NoResultFound:
             time_slot = TimeSlot(event_id=event_id, time_slot=ts, uniqname=uniqname)
@@ -740,7 +741,7 @@ def update_times(request):
             time = datetime.time(*map(int, time.split('-')))
             ts = datetime.datetime.combine(date, time)
 
-            time_slot = find_or_make_time_slot(event_id, uniqname, ts)
+            time_slot = find_or_make_time_slot(event_id, uniqname, ts, True)
 
             if time_slot.prelim_id != None:
                 # Someone got cute and circumvented to JS to try to delete a
@@ -755,7 +756,7 @@ def update_times(request):
             time = datetime.time(*map(int, time.split('-')))
             ts = datetime.datetime.combine(date, time)
 
-            time_slot = find_or_make_time_slot(event_id, uniqname, ts)
+            time_slot = find_or_make_time_slot(event_id, uniqname, ts, None)
 
             if time_slot.prelim_id != None:
                 # Someone got cute and circumvented to JS to try to delete a
@@ -770,7 +771,7 @@ def update_times(request):
             time = datetime.time(*map(int, time.split('-')))
             ts = datetime.datetime.combine(date, time)
 
-            time_slot = find_or_make_time_slot(event_id, uniqname, ts)
+            time_slot = find_or_make_time_slot(event_id, uniqname, ts, False)
 
             time_slot.mark_busy = False
     except:

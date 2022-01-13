@@ -747,7 +747,8 @@ def update_times(request):
                 # scheduled meeting, reject that
                 raise ValueError("Attempt to delete scheduled meeting")
 
-            time_slot.mark_busy = True
+            time_slot.mark_busy = None
+            # time_slot.mark_busy = False
 
         # for unmarked in request.POST['busy_times'].split():
         #     ts, event_id, date, time = unmarked.split('_')

@@ -198,12 +198,11 @@ def login_view(request):
         if socket.gethostname() != 'horton' and dev_user:
             uniqname = dev_user
         else:
-            uniqname = request.environ['REMOTE_USER'].split('@')[0]
+            uniqname = uniqnameWrapper(request)
 
         if uniqname == 'jstubb':
             return HTTPFound(location='/conf.html')
-        DBSession.query(Faculty).filter_by(uniqname=uniqname).one()
-        request.session['uniqname'] = uniqname
+
         return HTTPFound(location='/calendar.html')
     except KeyError:
         return {'why_failed': 'uniqname is required' }
@@ -215,6 +214,14 @@ def login_view(request):
 # def logout_view(request):
 #     request.session.invalidate()
 #     return HTTPFound(location='/')
+def uniqnameWrapper(request):
+    if socket.gethostname() != 'horton' and dev_user:
+        uniqname = dev_user
+    else:
+        uniqname = request.environ['REMOTE_USER'].split('@')[0]
+
+    request.session['uniqname'] = uniqname
+    return uniqname
 
 def render_prelims(DBSession, event, query):
     prelims_html = ''
@@ -636,7 +643,7 @@ def delete_event(request):
 @view_config(route_name='calendar', renderer='templates/calendar-mark-free.pt')
 def calendar_view(request):
     try:
-        uniqname = request.session['uniqname']
+        uniqname = uniqnameWrapper(request)
     except KeyError:
         return HTTPFound(location='/login.html')
     events_html = ''
@@ -732,7 +739,7 @@ def update_times(request):
     try:
         log.debug(request.POST.mixed())
 
-        uniqname = request.session['uniqname']
+        uniqname = uniqnameWrapper(request)
 
         for busy in request.POST['busy_times'].split():
             ts, event_id, date, time = busy.split('_')

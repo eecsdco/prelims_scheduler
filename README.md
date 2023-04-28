@@ -64,7 +64,7 @@ table with the list found in `prelims/scripts/fac_uniqs`.
 > use the example database which is pre-populated with a little bit of test
 > data. In that case, all you need to do is `cp exampledb.sqlite prelims.sqlite`
 
-### Deploying the webapp
+### Deploying the webapp (LOCALLY)
 
 For basic testing / debugging, python includes a built-in http server, which is
 easier than bothering to hook it in to apache / nginx / whatever your webserver
@@ -81,11 +81,21 @@ local machine to the `debugtoolbar.hosts` entry in `development.ini`.
 
 ### SSL Keys
 
-Whether running this app locally or on the server, make sure to have the following keys in place:
+Whether running this app locally, make sure to have the following keys in place:
 - /etc/ssl/certs/all.cert
-- /etc/ssl/private/key.pem 
+- /etc/ssl/private/key.pem
 
-### That's it!
+You should be able to visit the site at <https://0.0.0.0:6543/> locally.
 
-You should be able to visit the site at <https://0.0.0.0:6543/> locally or on horton at <http://horton.eecs.umich.edu:6543>.
+### PRODUCTION
+This project lives on horton at /var/www/html/prelims_scheduler. It runs via apache and is behind Shibboleth, so running `pserve` is not needed.
 
+Be sure the python packages version matches what's in the apache config:
+   
+ In `apache2/sites-available/default-ssl.conf`
+
+make sure the Python version in this line
+
+`WSGIPythonPath /var/www/html/prelims_scheduler/venv_prelims/lib/python3.10/site-packages`
+
+matches the version that is actually in the `venv_prelims/lib` path

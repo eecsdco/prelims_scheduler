@@ -8,6 +8,10 @@ frameworks are to tease apart data backends (models), website logic
 it can be a little intimidating to see how everything goes together to build
 things at first, I'll try to give a simple overview.
 
+Updates Aug. 2024
+-----------------
+- On Aug. 20, it was reported that the system was down. The issue was that the venv was running a python version that was not installed on the system after an OS upgrade. The venv was rebuilt to use python3.12.
+
 Updates Nov. 2021
 ---------------
 - This project now requires Python3 to run.
@@ -31,6 +35,9 @@ Create a virtual environment for this project:
     # venv_prelims is the name of the directory that will be created
     python -m venv venv_prelims
 
+    # ALTERNATIVELY, specify the python version (3.12 in this case). This was the solution to the issue that arose in Aug. 2024
+    python3.12 -m venv venv_prelims
+
 Next we need to "activate" this virtual environment. This is done on a
 _per-shell_ basis (it will update your `$PS1` automatically). There are tools
 ([virtualenvwrapper](virtualenvwrapper.readthdocs.org/en/latest/index.html))
@@ -43,6 +50,11 @@ Anything python-related (e.g. install packages) you do in a virtual enivronment
 will only affect this environment. This also means you don't have to (in fact,
 should not) be installing things as root, since they're only being installed in
 this local folder.
+
+Now install setup tools 
+    
+    # Installing setuptools is required for the next step
+    pip install setuptools
 
 ### Building the webapp
 
